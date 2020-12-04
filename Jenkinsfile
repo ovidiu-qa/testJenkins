@@ -9,8 +9,28 @@ pipeline {
     }
 
     stage('Test') {
-      steps {
-        echo 'Testing'
+      parallel {
+        stage('Test') {
+          steps {
+            echo 'Testing'
+          }
+        }
+
+        stage('Integration Testing') {
+          steps {
+            echo 'Integration testing'
+          }
+        }
+
+        stage('') {
+          steps {
+            timeout(time: 90) {
+              echo 'Performance testing complete'
+            }
+
+          }
+        }
+
       }
     }
 
