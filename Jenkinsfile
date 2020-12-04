@@ -22,7 +22,7 @@ pipeline {
           }
         }
 
-        stage('') {
+        stage('Performance Testing') {
           steps {
             timeout(time: 90) {
               echo 'Performance testing complete'
