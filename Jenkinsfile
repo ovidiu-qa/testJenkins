@@ -42,7 +42,7 @@ pipeline {
                 ${scannerHome}/bin/sonar-scanner.bat \
                 -Dsonar.host.url=http://127.0.0.1:9000 \
                 -Dsonar.projectKey=local.testJenkins \
-                -Dsonar.projectName=TestJenkinsMe  \
+                -Dsonar.projectName=TestJenkinsMe[${env.BRANCH_NAME}]  \
                 -Dsonar.sources=D:/Jenkins/workspace/testJenkins_${env.BRANCH_NAME}
                 """
             }
