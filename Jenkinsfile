@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'printenv'
+        echo 'Pulling...' + env.BRANCH_NAME
       }
     }
 
