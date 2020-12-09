@@ -34,7 +34,8 @@ pipeline {
     }
     stage('SonarQube') {
         environment {
-            scannerHome = tool 'SonarCubeScannerLocal'
+            scannerHome = tool 'SonarCubeScannerLocal',
+            projectSource = 'D:/Jenkins/workspace/testJenkins' + env.BRANCH_NAME
         }
         steps {
             withSonarQubeEnv('LocalSonarQubeServer') {
@@ -42,7 +43,7 @@ pipeline {
                 -Dsonar.host.url=http://127.0.0.1:9000 \
                 -Dsonar.projectKey=local.testJenkins \
                 -Dsonar.projectName=TestJenkinsMe  \
-                -Dsonar.sources=D:/Jenkins/workspace/testJenkins' + env.BRANCH_NAME '''
+                -Dsonar.sources=${projectSource} '''
             }
         }
     }
