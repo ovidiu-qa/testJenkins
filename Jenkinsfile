@@ -3,8 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        echo 'Building'
-        sh 'echo \'Bulding here two\''
+        echo 'Pulling...' + env.BRANCH_NAME
       }
     }
 
@@ -32,6 +31,20 @@ pipeline {
         }
 
       }
+    }
+    stage('SonarQube') {
+        environment {
+            scannerHome = tool 'SonarCubeScannerLocal'
+        }
+        steps {
+            withSonarQubeEnv('LocalSonarQubeServer') {
+                sh '''${scannerHome}/bin/sonar-scanner.bat \
+                -Dsonar.host.url=http://127.0.0.1:9000 \
+                -Dsonar.projectKey=local.testJenkins \
+                -Dsonar.projectName=TestJenkinsMe  \
+                -Dsonar.sources=D:/Jenkins/workspace/testJenkins' + env.BRANCH_NAME '''
+            }
+        }
     }
 
     stage('Deploy') {
