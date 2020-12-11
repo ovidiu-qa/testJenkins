@@ -6,6 +6,21 @@ pipeline {
         echo 'Pulling.....' + env.BRANCH_NAME
       }
     }
+    stage ('Test 3: Master') {
+        when { branch 'master' }
+        steps { 
+            echo 'I only execute on the master branch.' 
+        }
+    }
+    stage('WhenTestStop') {
+       when { branch 'testing' }
+        steps {
+            script {
+                error "This pipeline stops here!"
+            }
+        }
+    }
+
 
     stage('Testing') {
       parallel {
