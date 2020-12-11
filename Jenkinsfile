@@ -12,7 +12,9 @@ pipeline {
         stage('Test') {
           steps {
             echo 'Testing'
-            error "This pipeline stops here!"
+            if (true) {
+              error "This pipeline stops here!"
+            }
           }
         }
 
