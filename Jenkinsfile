@@ -1,3 +1,5 @@
+def skipRemainingStages = false
+
 pipeline {
   agent any
   stages {
@@ -12,11 +14,21 @@ pipeline {
         stage('Test') {
           steps {
             echo 'Testing'
+            script {
+                skipRemainingStages = true
+
+                println "skipRemainingStages = ${skipRemainingStages}"
+            }
           }
         }
 
         stage('Integration Testing') {
           steps {
+            when {
+                expression {
+                    !skipRemainingStages
+                }
+            }
             echo 'Integration testing'
           }
         }
