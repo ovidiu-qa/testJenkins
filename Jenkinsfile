@@ -12,8 +12,12 @@ pipeline {
         stage('Test') {
           steps {
             echo 'Testing'
-            if (true) {
-              error "This pipeline stops here!"
+            script {
+                if (env.BRANCH_NAME == 'master') {
+                    echo 'I only execute on the master branch'
+                } else {
+                    echo 'I execute elsewhere'
+                }
             }
           }
         }
