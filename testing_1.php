@@ -2,4 +2,8 @@
 
 echo 'YES';
 echo 'YES 2';
+
+$password = 'password';
+
+echo $password;
 ?>
