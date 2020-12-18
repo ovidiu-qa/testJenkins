@@ -5,5 +5,6 @@ echo 'YES 2';
 
 $password = 'password';
 
-echo $password;
+echo $passwor
+
 ?>
