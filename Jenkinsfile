@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        echo 'Pulling...' + env.BRANCH_NAME
+        echo 'Pulling..,.' + env.BRANCH_NAME
       }
     }
     stage ('Test 3: Master') {
