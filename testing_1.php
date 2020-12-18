@@ -5,6 +5,16 @@ echo 'YES 2';
 
 $password = 'password';
 
-echo $passwor
+if(true) {
+  if(true) {
+    if(true) {
+      if(true) {
+        if(true) {
+          echo $password;
+        }
+      }
+    }
+  }
+}
 
 ?>
