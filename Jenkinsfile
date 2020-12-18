@@ -68,11 +68,11 @@ pipeline {
                 -Dsonar.projectName=TestJenkinsMe[${env.BRANCH_NAME}] \
                 -Dsonar.sources=D:/Jenkins/workspace/testJenkins_${env.BRANCH_NAME}
                 """
-            }
+            },
             def qq = waitForQualityGate()
-          if(qq.status != 'OK') {
-            error "Pipeline aborted due to quality gate failure: ${qq.status}"
-          }
+            if(qq.status != 'OK') {
+              error "Pipeline aborted due to quality gate failure: ${qq.status}"
+            }
         }
     }
 
