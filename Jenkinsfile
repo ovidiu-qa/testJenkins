@@ -73,9 +73,12 @@ pipeline {
     }
     
     stage('SonarQube-QualityGate') {
-      timeout(time:1, unit: "MINUTES") {
-        echo "Test"
+      steps {
+        timeout(time:1, unit: "MINUTES") {
+          echo "Test"
+        }
       }
+      
     }
 
     stage('Deploy') {
