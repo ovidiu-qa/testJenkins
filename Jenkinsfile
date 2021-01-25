@@ -11,7 +11,7 @@ pipeline {
             url: 'https://github.com/ovidiu-qa/testJenkins'
         sh '''
           git merge origin/master
-          git check origin/master
+          git checkout origin/master
           git push
         '''
 
