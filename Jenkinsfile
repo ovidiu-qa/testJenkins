@@ -70,13 +70,13 @@ pipeline {
       steps {
         withSonarQubeEnv('LocalSonarQubeServer') {
           sh """
-                        ${scannerHome}/bin/sonar-scanner.bat \
-                        -Dsonar.host.url=http://127.0.0.1:9000 \
-                        -Dsonar.projectKey=local.testJenkins.${env.BRANCH_NAME} \
-                        -Dsonar.projectName=TestJenkinsMe[${env.BRANCH_NAME}] \
-                        -Dsonar.dependencyCheck.htmlReportPath=D:/Jenkins/workspace/testJenkins_${env.BRANCH_NAME}/dependency-check-report.xml \
-                        -Dsonar.sources=D:/Jenkins/workspace/testJenkins_${env.BRANCH_NAME}
-                      """
+                                  ${scannerHome}/bin/sonar-scanner.bat \
+                                  -Dsonar.host.url=http://127.0.0.1:9000 \
+                                  -Dsonar.projectKey=local.testJenkins.${env.BRANCH_NAME} \
+                                  -Dsonar.projectName=TestJenkinsMe[${env.BRANCH_NAME}] \
+                                  -Dsonar.dependencyCheck.htmlReportPath=D:/Jenkins/workspace/testJenkins_${env.BRANCH_NAME}/dependency-check-report.xml \
+                                  -Dsonar.sources=D:/Jenkins/workspace/testJenkins_${env.BRANCH_NAME}
+                                """
         }
 
       }
@@ -112,6 +112,6 @@ pipeline {
 
   }
   environment {
-    scannerHome = 'D:\\sonar-scanner-4.5.0.2216-windows\\bin'
+    SonarCubeScannerLocal = 'D:\\sonar-scanner-4.5.0.2216-windows\\bin'
   }
 }
