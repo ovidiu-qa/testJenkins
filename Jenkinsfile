@@ -41,7 +41,7 @@ pipeline {
               }
             }
 
-            mail(subject: 'Testing', body: 'Hello Blue Ocea', from: 'bluea-ocean@quantum-alchemy.com', replyTo: 'bluea-ocean@quantum-alchemy.com', to: 'ovidiu.fulea@quantum-alchemy.com')
+            // mail(subject: 'Testing', body: 'Hello Blue Ocea', from: 'bluea-ocean@quantum-alchemy.com', replyTo: 'bluea-ocean@quantum-alchemy.com', to: 'ovidiu.fulea@quantum-alchemy.com')
           }
         }
 
@@ -71,12 +71,12 @@ pipeline {
       steps {
         withSonarQubeEnv('LocalSonarQubeServer') {
           sh """
-                          ${scannerHome}/bin/sonar-scanner.bat \
-                          -Dsonar.host.url=http://127.0.0.1:9000 \
-                          -Dsonar.projectKey=local.testJenkins.${env.BRANCH_NAME} \
-                          -Dsonar.projectName=TestJenkinsMe[${env.BRANCH_NAME}] \
-                          -Dsonar.sources=D:/Jenkins/workspace/testJenkins_${env.BRANCH_NAME}
-                          """
+            ${scannerHome}/bin/sonar-scanner.bat \
+            -Dsonar.host.url=http://127.0.0.1:9000 \
+            -Dsonar.projectKey=local.testJenkins.${env.BRANCH_NAME} \
+            -Dsonar.projectName=TestJenkinsMe[${env.BRANCH_NAME}] \
+            -Dsonar.sources=D:/Jenkins/workspace/testJenkins_${env.BRANCH_NAME}
+          """
         }
 
       }
