@@ -84,7 +84,7 @@ pipeline {
     
     stage('Merge') {
       steps {
-        ah 'git merge master'
+        sh 'git merge master'
       }
     }
     
