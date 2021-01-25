@@ -3,7 +3,7 @@
 echo 'YES';
 echo 'YES 2';
 
-$password = 'password';
+$password = 'passwordqerh';
 
 if(true) {
   if(true) {
