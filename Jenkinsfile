@@ -8,9 +8,9 @@ pipeline {
       steps {
         git branch: 'dev', 
             credentialsId: 'QA_GitHub_FO',  
-            url: 'https://github.com/ovidiu-qa/testJenkins',
-            commit: '--author="QA test"'
-        sh '''          
+            url: 'https://github.com/ovidiu-qa/testJenkins'            
+        sh '''
+          git commit --author="QA test"
           git merge origin/branch-1
         '''
         
