@@ -10,7 +10,7 @@ pipeline {
             credentialsId: 'QA_GitHub_FO',  
             url: 'https://github.com/ovidiu-qa/testJenkins'
         sh '''          
-          git branch -a
+          git merge branch-1
         '''
         
       }
