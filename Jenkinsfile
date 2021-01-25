@@ -9,7 +9,7 @@ pipeline {
         git branch: 'dev', 
             credentialsId: 'QA_GitHub_FO',  
             url: 'https://github.com/ovidiu-qa/testJenkins'
-            config: 'user.name "QA test"'
+            commit: '--author="QA test"'
         sh '''          
           git merge origin/branch-1
         '''
