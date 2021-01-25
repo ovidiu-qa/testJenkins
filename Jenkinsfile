@@ -86,9 +86,7 @@ pipeline {
       when { branch 'dev' }
       steps {
         sh ('''
-          git fetch origin master
           git merge master
-          git push origin dev:master
         ''')
       }
     }
