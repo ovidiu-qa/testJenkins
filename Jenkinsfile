@@ -3,24 +3,30 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        echo 'Pulling....' + env.BRANCH_NAME
+        echo 'Pulling....'+env.BRANCH_NAME
       }
     }
-    stage ('Test 3: Master') {
-        when { branch 'master' }
-        steps { 
-            echo 'I only execute on the master branch.' 
-        }
-    }
-    stage('WhenTestStop') {
-       when { branch 'testing' }
-        steps {
-            script {
-                error "This pipeline stops here!"
-            }
-        }
+
+    stage('Test 3: Master') {
+      when {
+        branch 'master'
+      }
+      steps {
+        echo 'I only execute on the master branch.'
+      }
     }
 
+    stage('WhenTestStop') {
+      when {
+        branch 'testing'
+      }
+      steps {
+        script {
+          error "This pipeline stops here!"
+        }
+
+      }
+    }
 
     stage('Testing') {
       parallel {
@@ -28,12 +34,13 @@ pipeline {
           steps {
             echo 'Testing'
             script {
-                if (env.BRANCH_NAME == 'master') {
-                    echo 'I only execute on the master branch'
-                } else {
-                    echo 'I execute elsewhere'
-                }
+              if (env.BRANCH_NAME == 'master') {
+                echo 'I only execute on the master branch'
+              } else {
+                echo 'I execute elsewhere'
+              }
             }
+
           }
         }
 
@@ -54,45 +61,50 @@ pipeline {
 
       }
     }
+
     stage('SonarQube') {
-        environment {
-            scannerHome = tool 'SonarCubeScannerLocal'
-            somethingElse = 'TEST';
+      environment {
+        scannerHome = 'SonarCubeScannerLocal'
+        somethingElse = 'TEST'
+      }
+      steps {
+        withSonarQubeEnv('LocalSonarQubeServer') {
+          sh """
+                          ${scannerHome}/bin/sonar-scanner.bat \
+                          -Dsonar.host.url=http://127.0.0.1:9000 \
+                          -Dsonar.projectKey=local.testJenkins.${env.BRANCH_NAME} \
+                          -Dsonar.projectName=TestJenkinsMe[${env.BRANCH_NAME}] \
+                          -Dsonar.dependencyCheck.htmlReportPath=D:/Jenkins/workspace/testJenkins_${env.BRANCH_NAME}/dependency-check-report.xml \
+                          -Dsonar.sources=D:/Jenkins/workspace/testJenkins_${env.BRANCH_NAME}
+                          """
         }
-        steps {
-            withSonarQubeEnv('LocalSonarQubeServer') {
-                sh """
-                ${scannerHome}/bin/sonar-scanner.bat \
-                -Dsonar.host.url=http://127.0.0.1:9000 \
-                -Dsonar.projectKey=local.testJenkins.${env.BRANCH_NAME} \
-                -Dsonar.projectName=TestJenkinsMe[${env.BRANCH_NAME}] \
-                -Dsonar.dependencyCheck.htmlReportPath=D:/Jenkins/workspace/testJenkins_${env.BRANCH_NAME}/dependency-check-report.xml \
-                -Dsonar.sources=D:/Jenkins/workspace/testJenkins_${env.BRANCH_NAME}
-                """
-            }            
-        }
+
+      }
     }
-    
+
     stage('SonarQube-QualityGate') {
       steps {
-        timeout(time:1, unit: "MINUTES") {
-          echo "Test"
+        timeout(time: 1, unit: 'MINUTES') {
+          echo 'Test'
         }
+
       }
-      
     }
-    
+
     stage('Merge') {
-      when { branch 'dev' }
+      when {
+        branch 'dev'
+      }
       steps {
-        sh ('''
+        sh '''
           git branch -a
           git branch -r
           git branch
-        ''')
+        '''
+        gitAutomerger(checkoutFromRemote: true)
       }
     }
-    
+
     stage('Deploy') {
       steps {
         echo 'Deploying'
