@@ -13,7 +13,7 @@ pipeline {
           git pull
           git checkout origin/master
           git merge origin/dev
-          git push
+          git push origin HEAD:master
           git checkout origin/dev
         '''
 
