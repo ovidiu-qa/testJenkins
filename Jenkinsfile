@@ -83,11 +83,12 @@ pipeline {
     }
     
     stage('Merge') {
+      when { branch 'dev' }
       steps {
         sh ('''
-          git fetch --all
-          git checkout master
-          git merge dev
+          git fetch origin master
+          git merge master
+          git push origin dev:master
         ''')
       }
     }
