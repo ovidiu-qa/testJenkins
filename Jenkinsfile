@@ -85,7 +85,8 @@ pipeline {
     stage('Merge') {
       steps {
         sh 'git fetch --all'
-        sh 'git checkout master'
+        sh 'git checkout origin master'
+        sh 'git pull'
         sh 'git checkout dev'
         sh 'git merge master'
       }
