@@ -69,6 +69,7 @@ apipeline {
       steps {
         sh '''
           git branch -a
+          cd ../testJenkins_master
           git remote add testJenkinsMaster ../testJenkins_master
           git fetch testJenkins_master
           git merge -s ours --no-commit testJenkins_master/master
