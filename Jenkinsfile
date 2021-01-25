@@ -1,4 +1,4 @@
-pipeline {
+apipeline {
   agent any
   stages {
     stage('Build') {
@@ -69,8 +69,11 @@ pipeline {
       steps {
         sh '''
           git branch -a
-          git branch -r
-          git branch
+          git remote add testJenkinsMaster ../testJenkins_master
+          git fetch testJenkins_master
+          git merge -s ours --no-commit testJenkins_master/master
+          git commit
+          git push
         '''
       }
     }
