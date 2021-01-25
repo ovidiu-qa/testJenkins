@@ -65,7 +65,7 @@ pipeline {
 
     stage('Merge') {
       steps {
-        sh 'git merge master'
+        sh 'git branch -r'
       }
     }
     stage('Deploy') {
