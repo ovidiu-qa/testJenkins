@@ -63,25 +63,6 @@ pipeline {
       }
     }
 
-    stage('SonarQube') {
-      environment {
-        scannerHome = 'SonarCubeScannerLocal'
-        somethingElse = 'TEST'
-      }
-      steps {
-        withSonarQubeEnv('LocalSonarQubeServer') {
-          sh """
-            ${scannerHome}/bin/sonar-scanner.bat \
-            -Dsonar.host.url=http://127.0.0.1:9000 \
-            -Dsonar.projectKey=local.testJenkins.${env.BRANCH_NAME} \
-            -Dsonar.projectName=TestJenkinsMe[${env.BRANCH_NAME}] \
-            -Dsonar.sources=D:/Jenkins/workspace/testJenkins_${env.BRANCH_NAME}
-          """
-        }
-
-      }
-    }
-
     stage('Merge') {
       steps {
         ah 'git merge master'
