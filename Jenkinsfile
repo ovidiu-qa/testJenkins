@@ -1,8 +1,4 @@
-def handleCheckout = {
-	sh "echo 'Checking out a merge request…'"
-}
-
-apipeline {
+pipeline {
   agent any
   stages {
     stage('Merge') {
@@ -10,7 +6,6 @@ apipeline {
         branch 'dev'
       }
       steps {
-        handleCheckout()
         sh '''
           git branch -a
         '''
