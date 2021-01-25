@@ -87,7 +87,8 @@ pipeline {
       steps {
         sh ('''
           git branch -a
-          git merge remotes/origin/master
+          git branch -r
+          git branch
         ''')
       }
     }
