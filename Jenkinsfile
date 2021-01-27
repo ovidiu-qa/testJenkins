@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Merge') {
       when {
-        branch 'dev'
+        branch 'master'
       }
       steps {
         git branch: 'master',
