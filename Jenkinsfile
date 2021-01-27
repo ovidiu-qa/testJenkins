@@ -12,9 +12,10 @@ pipeline {
         sh '''
           git pull
           git checkout origin/master
-          git merge origin/dev
-          git push origin HEAD:master
-          git checkout origin/dev
+          git branch
+          // git merge origin/dev
+          // git push origin HEAD:master
+          // git checkout origin/dev
         '''
 
       }
