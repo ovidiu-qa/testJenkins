@@ -10,8 +10,8 @@ pipeline {
             credentialsId: 'QA_GitHub_FO',
             url: 'https://github.com/ovidiu-qa/testJenkins'
         sh '''
-          git pull
-          git checkout origin/master
+          git branch -a
+          git checkout master
           git branch -a
         '''
 
