@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  parameters {
+      gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
+  }
   stages {
     stage('Merge') {
       when {
@@ -17,5 +20,12 @@ pipeline {
 
       }
     }
+    stage("list all branches")
+        {
+            steps
+            {
+                git branch: "${params.BRANCH}", credentialsId: "QA_GitHub_FO", url: "https://github.com/ovidiu-qa/testJenkins"
+            }
+        }
   }
 }
