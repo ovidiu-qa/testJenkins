@@ -11,7 +11,7 @@ pipeline {
             url: 'https://github.com/ovidiu-qa/testJenkins'
         sh '''
           git branch -a
-          git checkout master
+          git checkout remotes/origin/master
           git branch -a
         '''
 
