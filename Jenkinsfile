@@ -6,7 +6,7 @@ pipeline {
         branch 'dev'
       }
       steps {
-        git branch: 'msater',
+        git branch: 'master',
             credentialsId: 'QA_GitHub_FO',
             url: 'https://github.com/ovidiu-qa/testJenkins'
         sh '''
