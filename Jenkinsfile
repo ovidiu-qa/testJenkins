@@ -22,7 +22,6 @@ pipeline {
         {
             steps
             {
-                git branch: "${params.BRANCH}", credentialsId: "QA_GitHub_FO", url: "https://github.com/ovidiu-qa/testJenkins"
                 git branch -a
             }
         }
