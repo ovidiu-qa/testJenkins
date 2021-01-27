@@ -6,13 +6,12 @@ pipeline {
         branch 'dev'
       }
       steps {
-        git branch: 'dev',
+        git branch: 'msater',
             credentialsId: 'QA_GitHub_FO',
             url: 'https://github.com/ovidiu-qa/testJenkins'
         sh '''
           git branch -a
-          git checkout remotes/origin/master
-          git branch -a
+          git merge remotes/origin/dev
         '''
 
       }
