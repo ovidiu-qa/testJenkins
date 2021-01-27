@@ -22,7 +22,7 @@ pipeline {
         {
             steps
             {
-                git: "branch -a"
+                git branch: " -a"
             }
         }
   }
