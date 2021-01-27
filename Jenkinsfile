@@ -12,7 +12,7 @@ pipeline {
         sh '''
           git branch -a
           git merge remotes/origin/dev
-          git push --set-upstream origin master
+          git push origin master
         '''
 
       }
