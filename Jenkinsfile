@@ -25,10 +25,10 @@ pipeline {
         withCredentials([usernamePassword(credentialsId: 'QA_GitHub_FO', passwordVariable: 'key', usernameVariable: 'gitUser')]) {
         sh '''
           git branch -a
-          git checkout -b dev
+          git checkout dev
           git merge master
           git push
-          git checkout -b master
+          git checkout master
         '''
         }
       }
