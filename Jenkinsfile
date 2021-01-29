@@ -21,15 +21,5 @@ pipeline {
 
       }
     }
-<<<<<<< HEAD
-    stage("list all branches")
-        {
-            steps
-            {
-                git branch: " -a"
-            }
-        }
-=======
->>>>>>> dev
   }
 }
