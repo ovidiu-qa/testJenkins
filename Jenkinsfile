@@ -14,17 +14,12 @@ pipeline {
             url: 'https://github.com/ovidiu-qa/testJenkins'
         sh '''
           git branch -a
+          git checkout dev
+          git merge $BRANCH_NAME
+          git checkout $BRANCH_NAME
         '''
 
       }
     }
-    stage("list all branches")
-        {
-            steps
-            {
-                git branch: "${params.BRANCH}", credentialsId: "QA_GitHub_FO", url: "https://github.com/ovidiu-qa/testJenkins"
-                git branch -a
-            }
-        }
   }
 }
