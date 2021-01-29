@@ -27,7 +27,7 @@ pipeline {
           git branch -a
           git checkout dev
           git merge master
-          git push
+          git push --set-upstream origin dev
           git checkout master
         '''
         }
