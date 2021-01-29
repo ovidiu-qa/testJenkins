@@ -13,7 +13,7 @@ pipeline {
             credentialsId: 'QA_GitHub_FO',
             url: 'https://github.com/ovidiu-qa/testJenkins'
         sh '''
-          git branch -a
+          git branch -v -a
         '''
       }
     }
@@ -24,10 +24,10 @@ pipeline {
       steps {
         withCredentials([usernamePassword(credentialsId: 'QA_GitHub_FO', passwordVariable: 'key', usernameVariable: 'gitUser')]) {
         sh '''
-          git branch -a
-          git checkout dev
+          git branch -v -a
+          git checkout dev origin/dev
           git merge master
-          git push --set-upstream origin dev
+          git push dev origin/dev
           git checkout master
         '''
         }
