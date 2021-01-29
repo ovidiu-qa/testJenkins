@@ -27,7 +27,7 @@ pipeline {
           git branch -v -a
           git checkout dev origin/dev
           git merge master
-          git push dev origin/dev
+          git push dev remotes/origin/dev
           git checkout master
         '''
         }
