@@ -1,3 +1,3 @@
 <?
 
-echo 'asdgadgfa';
+echo 'merge';

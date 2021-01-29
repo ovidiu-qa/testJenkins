@@ -26,9 +26,9 @@ pipeline {
         sh '''
           git branch -a
           git checkout -b dev
-          git branch -a
-          git checkout -t dev
-
+          git merge master
+          git push
+          git checkout -b master
         '''
         }
       }
