@@ -25,6 +25,8 @@ pipeline {
         withCredentials([usernamePassword(credentialsId: 'QA_GitHub_FO', passwordVariable: 'key', usernameVariable: 'gitUser')]) {
         sh '''
           git branch -a
+          git check origin dev
+
         '''
         }
       }
