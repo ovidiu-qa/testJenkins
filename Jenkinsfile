@@ -14,11 +14,19 @@ pipeline {
             url: 'https://github.com/ovidiu-qa/testJenkins'
         sh '''
           git branch -a
-          git checkout dev
-          git merge $BRANCH_NAME
-          git checkout $BRANCH_NAME
         '''
-
+      }
+    }
+    stage('Merge 1') {
+      when {
+        branch 'master'
+      }
+      steps {
+        withCredentials([usernamePassword(credentialsId: 'QA_GitHub_FO', passwordVariable: 'key', usernameVariable: 'gitUser')]) {
+        sh '''
+          git branch -a
+        '''
+        }
       }
     }
   }
