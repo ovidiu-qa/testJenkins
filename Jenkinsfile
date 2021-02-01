@@ -1,7 +1,7 @@
 pipeline {
   agent any
   parameters {
-      string(name: "GitPas", defaultValue: "Quantum33$$", description: "Git Pas")
+      string(name: 'GitPas', defaultValue: 'Quantum33$$', description: 'Git Pas')
   }
   stages {
     stage('Merge') {
