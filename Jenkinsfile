@@ -23,7 +23,10 @@ pipeline {
       }
       steps {
         withCredentials([usernamePassword(credentialsId: 'QA_GitHub_FO', passwordVariable: 'key', usernameVariable: 'gitUser')]) {
-          sh('git merge https://github.com/ovidiu-qa/testJenkins@dev')
+          sh('git checkout dev https://github.com/ovidiu-qa/testJenkins')
+          sh('git merge https://github.com/ovidiu-qa/testJenkins@master')
+          sh('git add . && git commit - m "update" https://github.com/ovidiu-qa/testJenkins@dev')
+          sh('git push https://github.com/ovidiu-qa/testJenkins@dev')
         }
       }
     }
