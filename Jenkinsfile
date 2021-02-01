@@ -24,6 +24,7 @@ pipeline {
       steps {
         withCredentials([usernamePassword(credentialsId: 'QA_GitHub_FO', passwordVariable: 'key', usernameVariable: 'gitUser')]) {
           sh('git remote -v')
+          sh('git push https://ovidiu-qa:Quantum33$$@master')
         }
       }
     }
