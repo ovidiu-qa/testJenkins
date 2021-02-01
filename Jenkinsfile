@@ -1,7 +1,7 @@
 pipeline {
   agent any
   parameters {
-      gitParameter branchFilter: 'origin/(.*)', defaultValue: 'master', name: 'BRANCH', type: 'PT_BRANCH'
+      QA_GitHub_FO = "Quantum33$$"
   }
   stages {
     stage('Merge') {
@@ -23,7 +23,7 @@ pipeline {
       }
       steps {
         withCredentials([usernamePassword(credentialsId: 'QA_GitHub_FO', passwordVariable: 'key', usernameVariable: 'gitUser')]) {
-          sh("git branch -v -a https://ovidiu-qa:Quantum33$$@github.com/ovidiu-qa/testJenkins")
+          sh("git branch -v -a https://ovidiu-qa:${QA_GitHub_FO}@github.com/ovidiu-qa/testJenkins")
         }
       }
     }
