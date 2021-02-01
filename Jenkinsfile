@@ -25,7 +25,6 @@ pipeline {
         withCredentials([usernamePassword(credentialsId: 'QA_GitHub_FO', passwordVariable: 'key', usernameVariable: 'gitUser')]) {
         sh '''
           git branch -v -a
-          git checkout dev HEAD:https://github.com/ovidiu-qa/testJenkins#dev
         '''
         }
       }
@@ -36,7 +35,6 @@ pipeline {
         withCredentials([usernamePassword(credentialsId: 'QA_GitHub_FO', passwordVariable: 'key', usernameVariable: 'gitUser')]) {
         sh '''
           git branch -v -a
-          git checkout dev HEAD:https://github.com/ovidiu-qa/testJenkins#dev
         '''
         }
       }
