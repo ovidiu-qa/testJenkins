@@ -23,7 +23,7 @@ pipeline {
       }
       steps {
         withCredentials([usernamePassword(credentialsId: 'QA_GitHub_FO', passwordVariable: 'key', usernameVariable: 'gitUser')]) {
-          sh("git branch -v -a https://ovidiu-qa:${params.GITPAS}@github.com/ovidiu-qa/testJenkins")
+          sh("git branch -v -a https://ovidiu-qa:${params.GITPAS}@github.com/ovidiu-qa/testJenkins@master --tags")
         }
       }
     }
