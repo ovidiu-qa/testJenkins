@@ -1,3 +1,3 @@
 <?
 
-echo 'merge';
+echo 'merge 1a';
