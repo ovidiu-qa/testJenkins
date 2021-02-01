@@ -1,7 +1,7 @@
 pipeline {
   agent any
   parameters {
-      string(name: 'GitPas', defaultValue: 'Quantum33$$', description: 'Git Pas')
+      string(name: 'GITPAS', defaultValue: 'Quantum33$$', description: 'Git Pas')
   }
   stages {
     stage('Merge') {
@@ -23,7 +23,7 @@ pipeline {
       }
       steps {
         withCredentials([usernamePassword(credentialsId: 'QA_GitHub_FO', passwordVariable: 'key', usernameVariable: 'gitUser')]) {
-          sh("git branch -v -a https://ovidiu-qa:${param.GitPas}@github.com/ovidiu-qa/testJenkins")
+          sh("git branch -v -a https://ovidiu-qa:${param.GITPAS}@github.com/ovidiu-qa/testJenkins")
         }
       }
     }
