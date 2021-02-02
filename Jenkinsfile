@@ -9,7 +9,6 @@ pipeline {
         branch 'master'
       }
       steps {
-        git branch: 'master',
             credentialsId: 'QA_GitHub_FO',
             url: 'https://github.com/ovidiu-qa/testJenkins'
         sh '''
@@ -24,7 +23,6 @@ pipeline {
       steps {
         withCredentials([usernamePassword(credentialsId: 'QA_GitHub_FO', passwordVariable: 'key', usernameVariable: 'gitUser')]) {
           sh('git remote -v')
-          sh('git remote -v https://ovidiu-qa:Quantum33$$@master')
         }
       }
     }
