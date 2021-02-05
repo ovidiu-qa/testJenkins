@@ -13,7 +13,6 @@ pipeline {
             url: 'https://github.com/ovidiu-qa/testJenkins'
         sh '''
           git branch -v -a
-          git push https://github.com/ovidiu-qa/testJenkins
         '''
       }
     }

@@ -1,2 +1,2 @@
-FROM node:latest
+FROM xampp:latest
 
