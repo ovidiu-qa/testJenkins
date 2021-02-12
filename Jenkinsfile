@@ -27,7 +27,7 @@ pipeline {
       }
     }
   }
-   post() {
+  post() {
       always {
         withCredentials([usernamePassword(credentialsId: 'QA_GitHub_FO', passwordVariable: 'key', usernameVariable: 'gitUser')]) {
         sh '''
